@@ -18,8 +18,9 @@ class Application extends Component {
 
     componentDidUpdate(props, state){
         // console.log("It got from", state, "to", this.state) // on voit que le state c'est le premier puis this state est actuel au nombre de clic donc 0 et 1 on voit apparaitre
-        if(this.state.count > 10){
-           this.setState({overTen}): true;
+        if(this.state.count > 10 && this.state.count != state.count && !this.state.overTen ){ // pour ne pas qu'il sois répété, juste qu'une seule fois qu'il sois différent 
+            console.log("updating up to 10 and more");
+            this.setState({overTen: true});
         }
     }
     
@@ -32,6 +33,15 @@ class Application extends Component {
         return( 
             <div>
                 <h1> Hi {name} you clicked the button {count} times </h1>
+                
+                <h3> You can't beat me </h3>
+
+                {
+                (this.state.overTen) ?
+                <h3> You just beat me </h3>
+                : null
+                 }
+
                 <span> This is your shit </span>
 
                 <button onClick={(e) => this.handleClick()}> Click Me </button> 
