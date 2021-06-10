@@ -5,39 +5,36 @@ class Application extends Component {
     constructor(props){
         super(props);
 
-        }
-
-        componentWillMount(props, state){
-
-        }
-
-        componentDidMount(props, state){
-            console.log("Mounted with", props, state);
-        }
-
-        componentWillReceiveProps(props){
-
-        }
-
-        componentWillUpdate(props, state){
-            if(this.props.name !== props.name){
-                //do something
-            }
-        }
-
-        componentDidUpdate(props, state){
-            
+        this.state = {
+            count: 0,
+            overTen: false
         }
 
     }
 
+    handleClick = () => {
+        this.setState({count: this.state.count + 1})
+    }
+
+    componentDidUpdate(props, state){
+        // console.log("It got from", state, "to", this.state) // on voit que le state c'est le premier puis this state est actuel au nombre de clic donc 0 et 1 on voit apparaitre
+        if(this.state.count > 10){
+           this.setState({overTen}): true;
+        }
+    }
+    
+
     render(){
         let name = "Laura";
+        let {count} = this.state;
 
-        return (
+//e c'est l'évènement donc au clic = cet evenement active le handleclick au dessus
+        return( 
             <div>
-                <h1> Hello {name} </h1>
+                <h1> Hi {name} you clicked the button {count} times </h1>
                 <span> This is your shit </span>
+
+                <button onClick={(e) => this.handleClick()}> Click Me </button> 
             </div>
         )
     }
