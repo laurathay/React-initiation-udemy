@@ -26,7 +26,8 @@ class Application extends Component {
     }
     
     resetCount = (e) => {
-        this.setState = ({
+        console.log("Event is", e);
+        this.setState ({
             count: 0,
             overTen: false,
         });
@@ -45,13 +46,12 @@ class Application extends Component {
 
                 <HighScore 
                     overTen={this.state.overTen}
-                    onReset={(e) => this.resetCount(e)}
-                
+                    onReset={this.resetCount}
                 />
 
-                <span> This is your shit </span>
-
-                <button onClick={(e) => this.handleClick()}> Click Me </button> 
+                <span>
+                         <button onClick={() => this.handleClick()}> Click Me </button> 
+                </span>
             </div>
         )
     }
