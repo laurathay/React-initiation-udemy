@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Highscore, {Component} from './HighScore';
+import HighScore from './HighScore';
 
 class Application extends Component {
 
@@ -43,7 +43,7 @@ class Application extends Component {
                 
                 <h3> You can't beat me </h3>
 
-                <Highscore 
+                <HighScore 
                     overTen={this.state.overTen}
                     onReset={(e) => this.resetCount(e)}
                 
