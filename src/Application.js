@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Highscore, {Component} from './HighScore';
 
 class Application extends Component {
 
@@ -24,6 +25,12 @@ class Application extends Component {
         }
     }
     
+    resetCount = (e) => {
+        this.setState = ({
+            count: 0,
+            overTen: false,
+        });
+    }
 
     render(){
         let name = "Laura";
@@ -36,11 +43,11 @@ class Application extends Component {
                 
                 <h3> You can't beat me </h3>
 
-                {
-                (this.state.overTen) ?
-                <h3> You just beat me </h3>
-                : null
-                 }
+                <Highscore 
+                    overTen={this.state.overTen}
+                    onReset={(e) => this.resetCount(e)}
+                
+                />
 
                 <span> This is your shit </span>
 
